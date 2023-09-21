@@ -1,4 +1,4 @@
-package fr.gaston.crud.api;
+package fr.gaston.crud.api.entitys;
 
 
 import lombok.Getter;
@@ -22,7 +22,7 @@ public class Account {
     private String mail;
     private String password;
 
-    
+
     public Account(Long id, String username, String mail, String password) {
         this.id = id;
         this.username = username;

@@ -1,5 +1,7 @@
-package fr.gaston.crud.api;
+package fr.gaston.crud.api.services;
 
+import fr.gaston.crud.api.entitys.Account;
+import fr.gaston.crud.api.repositorys.AccountRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -27,9 +29,14 @@ public class AccountService {
 
     public void ajouterUser(Account account) {
 
-        Optional<Account> accountOptional = accountRepository.findUserByUsername(account.getUsername());
-        if (accountOptional.isPresent()) {
+        Optional<Account> verifuserName = accountRepository.findUserByUsername(account.getUsername());
+        if (verifuserName.isPresent()) {
             throw new IllegalStateException("nom déjà utilisé");
+        }
+
+        Optional<Account> verifEmail = accountRepository.findUserByEmail(account.getMail());
+        if (verifEmail.isPresent()) {
+            throw new IllegalStateException("email déjà utilisé");
         }
         accountRepository.save(account);
     }
@@ -60,4 +67,13 @@ public class AccountService {
         }
     }
 
+    public Account getAccountByUsername(String nom) {
+
+        Optional<Account> account = accountRepository.findUserByUsername(nom);
+        if (account.isPresent()) {
+            return account.get();
+        } else {
+            throw new IllegalStateException("Erreur : utilisateur introuvable");
+        }
+    }
 }
