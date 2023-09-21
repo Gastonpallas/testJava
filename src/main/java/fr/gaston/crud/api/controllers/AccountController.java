@@ -9,7 +9,7 @@ import java.util.List;
 
 
 @RestController
-@RequestMapping(path = "api/v1/crud")
+@RequestMapping(path = "api/crud")
 @CrossOrigin
 public class AccountController {
 
