@@ -1,10 +1,10 @@
-package fr.gaston.testjava;
+package fr.gaston.security;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
 
 @SpringBootTest
-class TestJavaApplicationTests {
+class SecurityApplicationTests {
 
 	@Test
 	void contextLoads() {
